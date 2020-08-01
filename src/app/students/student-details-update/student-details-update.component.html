@@ -1,0 +1,88 @@
+<form [formGroup]="updateForm" class="container" novalidate>
+  <div class="profile-div">
+  <div class="form-row">
+    <!-- Email -->
+    <div class="form-group col-md-6">
+      <label for="  UpdateEmail">Email address</label>
+      <input type="email" class="form-control" autofocus="true" formControlName="email" [ngClass]="{
+              'is-valid': (email.valid),
+              'is-invalid': (email.invalid)
+            }">
+      <div class="invalid-feedback">
+        Your email must contain a local-part, an @ symbol and then a case-insensitive domain.
+      </div>
+    </div>
+
+    <div class="form-group col-md-6">
+      <label for="UpdatePassword">Password</label>
+      <input type="password" class="form-control" formControlName="password" [ngClass]="{
+            'is-valid': (password.valid),
+            'is-invalid': (password.invalid)
+          }">
+      <div class="invalid-feedback">
+        Your password must be 4-20 characters long, contain letters and numbers, and must not contain spaces, special characters,
+        or emoji.
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <!-- Name -->
+    <label for="inputName">Name</label>
+    <input type="text" class="form-control" formControlName="name" [ngClass]="{
+      'is-valid': (name.valid),
+      'is-invalid': (name.invalid)
+    }">
+    <div class="invalid-feedback">
+      Please provide a valid Name.
+    </div>
+  </div>
+
+  <div class="form-group">
+    <!-- birthday -->
+    <label for="inputBirthday">Birthday</label>
+    <input type="date" class="form-control" value="{{data.birthday | date: 'yyyy-MM-dd'}}" formControlName="birthday" 
+    placeholder="yyyy-MM-dd"
+    [ngClass]="{
+      'is-valid': (birthday.valid),
+      'is-invalid': (birthday.invalid)
+    }">
+    <div class="invalid-feedback">
+      Please provide a valid Birthday.
+    </div>
+  </div>
+
+  <div class="form-row">
+    <!-- Course -->
+    <div class="form-group col-md-6">
+      <label for="UpdateCourse">Course</label>
+      <input type="text" class="form-control" formControlName="course" [ngClass]="{
+        'is-valid': (course.valid),
+        'is-invalid': (course.invalid)
+      }">
+      <div class="invalid-feedback">
+        Please provide a valid Course.
+      </div>
+    </div>
+
+
+    <div class="form-group col-md-6">
+      <!-- grade -->
+      <label for="UpdateGrade">Grade</label>
+      <input type="number" class="form-control" min="0" max="100" formControlName="grade" [ngClass]="{
+        'is-valid': (grade.valid),
+        'is-invalid': (grade.invalid)
+      }">
+      <div class="invalid-feedback">
+        Please provide a valid Grade between 0-100 (includ).
+      </div>
+    </div>
+  </div>
+  
+  <div class="row justify-content-around">
+  <button type="submit" (click)="edit()" class="btn btn-primary" [disabled]="updateForm.invalid" [ngClass]="{
+    'disabled': updateForm.invalid}"> Save</button>
+    <button type="reset" class="btn btn-primary"> Reset</button>
+  </div>
+    </div>
+  </form>

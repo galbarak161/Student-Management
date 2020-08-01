@@ -1,0 +1,26 @@
+<section>
+  <div class="fullscreen-bg">
+    <video loop muted autoplay class="fullscreen-bg__video">
+      <source src="https://cdn.involvio.com/assets/marketing/home-video-631081fab8f48bd86f818effd996a269.webm" type="video/webm">
+      <source src="https://cdn.involvio.com/assets/marketing/home-video-2ba151787b15d8425373bdce3a8720fc.mp4" type="video/mp4">
+      <source src="https://cdn.involvio.com/assets/marketing/home-video-6b72bbfbeb9d2b37e3e94a9fd5deb73e.ogv" type="video/ogg"> Your browser does not support HTML5 video.
+    </video>
+  </div>
+</section>
+
+<div class="content">
+  <h1 class="display-4">Hello, {{userName}}!</h1>
+  <p class="lead" *ngIf="userName == 'User'">Welcome! Click
+    <span class="alert-link" (click)="loginToggle()">here</span>
+    to log in or
+    <span class="alert-link" (click)="registerToggle()">here</span>, to register!</p>
+  <p class="lead" *ngIf="userName != 'User'">Welcome! Click
+    <span class="alert-link" (click)="logOut()">here</span> to log out!
+
+  </p>
+  <app-login [hidden]="hideLogin">
+  </app-login>
+
+  <app-register [hidden]="hideReg" (newStudent)="addStudent($event)">
+  </app-register>
+</div>

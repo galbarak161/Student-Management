@@ -1,0 +1,105 @@
+<form [formGroup]="regForm" novalidate>
+
+  <div class="form-row">
+    <!-- Email -->
+    <div class="form-group col-md-6">
+      <label for="InputEmail">Email address</label>
+      <input type="email" class="form-control" placeholder="Enter email" autofocus="true" formControlName="email" [ngClass]="{
+          'is-valid': (email.valid && email.dirty && email.touched),
+          'is-invalid': (email.invalid && email.dirty && email.touched)
+        }">
+      <small id="emailHelpBlock" class="form-text text-muted">
+        Your email must contain a local-part, an @ symbol and then a case-insensitive domain.
+      </small>
+      <div class="invalid-feedback">
+        Please provide a valid Email.
+      </div>
+    </div>
+
+    <div class="form-group col-md-6">
+      <label for="inputPassword">Password</label>
+      <input type="password" class="form-control" placeholder="Password" formControlName="password" [ngClass]="{
+        'is-valid': (password.valid && password.dirty && password.touched),
+        'is-invalid': (password.invalid && password.dirty && password.touched)
+      }">
+      <small id="passwordHelpBlock" class="form-text text-muted">
+        Your password must be 4-20 characters long, contain letters and numbers, and must not contain spaces, special characters,
+        or emoji.
+      </small>
+      <div class="invalid-feedback">
+        Please provide a valid Password.
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <!-- Name -->
+    <div class="form-group col-md-6">
+      <label for="inputName">Name</label>
+      <input type="text" class="form-control" placeholder="First Name" formControlName="name" [ngClass]="{
+      'is-valid': (name.valid && name.dirty && name.touched),
+      'is-invalid': (name.invalid && name.dirty && name.touched)
+    }">
+      <div class="invalid-feedback">
+        Please provide a valid Name.
+      </div>
+    </div>
+
+    <div class="form-group col-md-6">
+      <!-- birthday -->
+      <label for="inputBirthday">Birthday</label>
+      <input type="date" name="inputBirthdayName" class="form-control range-field" formControlName="birthday" [ngClass]="{
+      'is-valid': (birthday.valid && birthday.dirty && birthday.touched),
+      'is-invalid': (birthday.invalid && birthday.dirty && birthday.touched)
+    }">
+      <div class="invalid-feedback">
+        Please provide a valid Name.
+      </div>
+
+    </div>
+  </div>
+
+  <div class="form-row">
+    <!-- Course -->
+    <div class="form-group col-md-6">
+      <label for="inputCourse">Course</label>
+      <input type="text" class="form-control" placeholder="Course" formControlName="course" [ngClass]="{
+        'is-valid': (course.valid && course.dirty && course.touched),
+        'is-invalid': (course.invalid && course.dirty && course.touched)
+      }">
+      <div class="invalid-feedback">
+        Please provide a valid Course.
+      </div>
+    </div>
+
+    <div class="form-group col-md-6">
+      <!-- grade -->
+      <label for="inputGrade">Grade</label>
+      <input type="number" class="form-control" placeholder="Grade" min="0" max="100" formControlName="grade" [ngClass]="{
+        'is-valid': (grade.valid && grade.dirty && grade.touched),
+        'is-invalid': (grade.invalid && grade.dirty && grade.touched)
+      }">
+      <div class="invalid-feedback">
+        Please provide a valid Grade.
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-around">
+    <button type="submit" (click)="receiveStudent()" class="btn btn-primary">Submit</button>
+    <button type="reset" class="btn btn-primary">Clear</button>
+  </div>
+</form>
+<!--
+<div class="form-group row">
+  <label class="col-md"for="userType">Are you?</label>
+  <div class="form-check form-check-inline col-md">
+      <input class="form-check-input" type="radio" name="userTypeOptions" value="student" formControlName="userTypeOptions" checked>
+      <label class="form-check-label">Student</label>
+    </div>
+    <div class="form-check form-check-inline col-md">
+      <input class="form-check-input" type="radio" name="userTypeOptions" value="teacher" formControlName="userTypeOptions">
+      <label class="form-check-label">Teacher</label>
+    </div>        
+</div>
+-->

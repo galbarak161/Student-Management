@@ -1,0 +1,22 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+/*index.html script */
+
+#page {
+    margin: 0 auto;
+    width: 100%;
+}
+
+#footer {
+    border-top: 1px double #faf8f4;
+    clear: both;
+    margin-top: 20px;
+    padding-top: 5px;
+    color: #faf8f4;
+}
+
+
+
+

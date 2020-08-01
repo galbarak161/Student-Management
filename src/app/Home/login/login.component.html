@@ -1,0 +1,56 @@
+<form [formGroup]="loginForm" novalidate>
+    <div class="form-group">
+      <label for="InputEmail">Email address</label>
+      <input type="email" class="form-control" placeholder="Enter email" autofocus="true" autocomplete="on" formControlName="email" 
+        [ngClass]="{
+          'is-valid': (email.valid && email.dirty && email.touched),
+          'is-invalid': (email.invalid && email.dirty && email.touched)
+        }">
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" placeholder="Enter password" formControlName="password" 
+      [ngClass]="{
+        'is-valid': (password.valid && password.dirty && password.touched),
+        'is-invalid': (password.invalid && password.dirty && password.touched)
+      }">
+    </div>
+    <div class="alert alert-warning" role="alert" [hidden]="hideInvalidErrorMessage">
+      Wrong Email or Password!
+    </div>
+    <div class="row justify-content-around">
+      <button type="submit" class="col-md-5 btn btn-primary" (click)="login()">Log In</button>
+      <button class="col-md-5 btn btn-primary" type="reset">Clear</button>
+    </div>
+  </form>
+
+
+  <!--
+    <form [formGroup]="loginForm" novalidate>
+  <div class="form-group">
+    <label for="InputEmail">Email address</label>
+    <input type="email" class="form-control" placeholder="Enter email" autofocus="true" autocomplete="off" formControlName="email" 
+      [ngClass]="{
+        'is-valid': (email.valid && email.dirty && email.touched),
+        'is-invalid': (email.invalid && email.dirty && email.touched)
+      }">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" placeholder="Enter password" formControlName="password" 
+    [ngClass]="{
+      'is-valid': (password.valid && password.dirty && password.touched),
+      'is-invalid': (password.invalid && password.dirty && password.touched)
+    }">
+  </div>
+  <div class="alert alert-warning" role="alert" [hidden]="invalidPassEmail">
+    Wrong Email or Password!
+  </div>
+  <div class="row justify-content-around">
+    <button type="submit" class="col-md-5 btn btn-primary" (click)="studentLogin()">Log In</button>
+    <button class="col-md-5 btn btn-primary" (click)="studentReg()">Register</button>
+  </div>
+</form>
+-->

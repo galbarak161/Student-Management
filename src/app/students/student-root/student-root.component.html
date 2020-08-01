@@ -1,0 +1,32 @@
+<section>
+    <div class="fullscreen-bg">
+        <img class="fullscreen-bg__pic" src="https://pbs.twimg.com/profile_banners/50988711/1384539792/600x200" alt="bg-pic">
+    </div>
+</section>
+
+<section class="row">
+<div class="col-md">
+        <app-student-details [student]="student" (toggleChat)="toggleChat($event)" (toggleEdit)="toggleEdit($event)" (edit)="editStudent($event)"></app-student-details>
+</div>
+<div class="col-md">
+    <section *ngIf="hideEdit">
+        <app-student-details-update [student]="student" (edit)="editStudent($event)"></app-student-details-update>
+      </section>
+      <section *ngIf="hideChat">
+            <app-chat [student]="student"></app-chat>
+      </section>
+
+</div>
+</section>
+
+
+
+<!--
+<div class="row">
+    <app-student-list [students]="students" (studentSelected)="studentSelected($event)"></app-student-list>
+</div>
+
+<section *ngIf="!hideReg">
+    <app-student-add class="col-md" (newStudent)="addStudent($event)"></app-student-add>
+</section>
+-->

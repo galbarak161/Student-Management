@@ -1,0 +1,97 @@
+<!--
+<div class="container">
+  <div class="card">
+    <canvas class="header-bg" width="250" height="70" id="header-blur"></canvas>
+    <figcaption>
+      <figure class="avatar">
+        <img src="{{ data.picSrc }}" alt="profile picture" />
+      </figure>
+    </figcaption>
+    <div class="content">
+      <h2>Name: {{ data.name }}</h2>
+      <h6>Email:
+        <span contenteditable ng-model="text" #email>{{ data.email }}</span>
+      </h6>
+      <h6>Password:
+        <span contenteditable ng-model="text" #password>{{ data.password }}</span>
+      </h6>
+      <h3>Age: {{ data.calculateAge(data.birthday) }}</h3>
+      <h4>birthday: {{ data.birthday | date:"dd-MM-yyyy" }}</h4>
+      <div>
+        <h4>Course: {{ data.course }}</h4>
+        <span [hidden]="hideGrade">Grade: {{ data.grade }}</span>
+        <br/>
+        <input ng-model="confirmed" (change)="toggleGrade()" class="form-check-input" type="checkbox" #showHideGrade>
+        <label *ngIf="showHideGrade">Hide Grade</label>
+        <label *ngIf="!showHideGrade">Show Grade</label>
+      </div>
+      <br/>
+      <div class="row justify-content-around">
+        <button (click)="remove()" type="button" class="btn btn-primary" data-toggle="modal">Remove Student</button>
+        <button (click)="toggleEdit()" type="button" class="btn btn-primary" data-toggle="modal">Edit Details</button>
+      </div>
+      <br/>
+      <section *ngIf="hideEdit">
+        <br />
+        <br />
+        <app-student-details-update [student]="data" (edit)="toggleEdit()"></app-student-details-update>
+      </section>
+    </div>
+  </div>
+</div>
+-->
+
+
+
+<div class="container">
+    <div class="profile-div">
+      <a class="profile-bg profile-block"></a>
+      <div>
+        <div class="row">
+        <div class="avatar-block col-md-11">
+          <figcaption>
+            <figure class="avatar">
+              <img src="{{ data.picSrc }}" alt="profile picture" />
+            </figure>
+          </figcaption>
+          <div class="edit-pic col-md-1">
+              <img src="data:image/png;base64,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" alt="edit profile" class="fa" 
+              (click)="toggleE()"/>
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdmwQFihkxIkU_QoUpE7o_0zJF59w5k4eHr5Tv4_qaFyK2DmIurQ" alt="open chat" class="fa" 
+              (click)="toggleC()"/>
+          </div>
+        </div>
+      </div>
+        <div class="row">
+        <div class="details-div">
+          <div class="profile-Name">
+            <p id="name">{{data.name}}, <span id="age">{{ data.calculateAge(data.birthday) }}</span></p>
+          </div>
+        </div>
+        <!--
+        <div class="row">
+        <button (click)="toggleEdit()" type="button" class="btn btn-primary edit-btn" data-toggle="modal">Edit Details</button>
+        </div>
+      -->
+      </div>
+
+        <div class="student-divStats">
+          <ul class="student-Data-ul">
+            <li class="student-Data">
+                <span class="student-StatLabel profile-block"><h5>birthday</h5></span>
+                <span class="student-StatValue">{{ data.birthday | date:"dd-MM-yyyy" }}</span>
+            </li>
+            <li class="student-Data">
+                <span class="student-StatLabel profile-block"><h5>Course</h5></span>
+                <span class="student-StatValue">{{ data.course }}</span>
+            </li>
+            <li class="student-Data">
+                <span class="student-StatLabel profile-block"><h5>Grade</h5></span>
+                <span class="student-StatValue">{{ data.grade }}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- code end -->
+</div>

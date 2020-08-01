@@ -1,0 +1,114 @@
+<!--
+<section class="row">
+  <ul class="list-group col-md-4">
+    <li class="list-group-item active">Students List</li>
+    <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let student of students" (click)="studentSelected1(student)">
+      {{ student.name }}
+    </li>
+  </ul>
+  <form [formGroup]="messageForm" novalidate class="col-md-8">
+    <select class="form-control" (ngModelChange)="studentSelected()" formControlName="studentId">
+      <option>choose Student</option>
+      <option *ngFor="let student of students" [ngValue]="student.studentId">{{ student.name }}</option>
+    </select>
+
+    <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+      <ngb-panel title="Your Chat">
+        <ng-template ngbPanelContent>
+            <div class="form-group">
+                <textarea disabled class="form-control" id="exampleFormControlTextarea1" rows="10" formControlName="chat"></textarea>
+              </div>        
+        </ng-template>
+      </ngb-panel>
+    </ngb-accordion>
+
+      <input type="text" class="form-control" placeholder="Enter your message" formControlName="messageToSend">
+      <button type="submit" class="btn btn-primary" (click)="send()">send</button>
+  </form>
+
+  <div class="row">
+      <div class="col">
+        <div ngbDropdown class="d-inline-block">
+          <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Toggle dropdown</button>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button class="dropdown-item">Action - 1</button>
+            <button class="dropdown-item">Another Action</button>
+            <button class="dropdown-item">Something else is here</button>
+          </div>
+        </div>
+      </div>
+  </div>
+
+
+</section>
+-->
+
+
+<section>
+  <br>
+  <!--<div class="form-group row fixed-top">-->
+  <div class="form-group row">
+    <label for="Filter" class="col-sm-1 col-form-label col-form-label-lg">Filter</label>
+    <input type="text" class="col-sm-11 form-control form-control-lg" placeholder="Filter cards by Name" [(ngModel)]="searchText">
+  </div>
+
+  <div class="row">
+    <div class="col-4" *ngFor="let data of (studentsList | filter: searchText : 'name')">
+      <div class="container">
+        <div class="profile-div" (click)="data.selected = !data.selected" [ngClass]="{'profile-selected' : data.selected}">
+          <a class="profile-bg profile-block"></a>
+          <div>
+            <div class="row">
+              <div class="avatar-block col-md-11">
+                <figcaption>
+                  <figure class="avatar">
+                    <img src="{{ data.picSrc }}" alt="profile picture" />
+                  </figure>
+                </figcaption>
+              </div>
+            </div>
+            <div class="row">
+              <div class="details-div">
+                <div class="profile-Name">
+                  <p id="name">{{data.name}},
+                    <span id="age">{{ data.calculateAge(data.birthday) }}</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="student-divStats">
+              <ul class="student-Data-ul">
+                <li class="student-Data">
+                  <span class="student-StatLabel profile-block">
+                    <h5>birthday</h5>
+                  </span>
+                  <span class="student-StatValue">{{ data.birthday | date:"dd-MM-yyyy" }}</span>
+                </li>
+                <li class="student-Data">
+                  <span class="student-StatLabel profile-block">
+                    <h5>Course</h5>
+                  </span>
+                  <span class="student-StatValue">{{ data.course }}</span>
+                </li>
+                <li class="student-Data">
+                  <span class="student-StatLabel profile-block">
+                    <h5>Grade</h5>
+                  </span>
+                  <span class="student-StatValue">{{ data.grade }}</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- code end -->
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <div class="row justify-content-around">
+    <button type="button" (click)="loadMoreStudents()" class="btn btn-primary col-md" [disabled]="isDisabled">Load More!</button>
+  </div>
+
+</section>
